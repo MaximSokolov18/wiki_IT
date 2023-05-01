@@ -1,0 +1,14 @@
+.app {
+  &__menu {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background-color: #000715;
+    padding: 5px 0;
+
+    &-item {
+      width: auto;
+      padding: 20px;
+    }
+  }
+}

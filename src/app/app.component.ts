@@ -6,5 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'wiki';
+  pageRouters: Array<{link: string, title: string}> = [{
+    link: 'main',
+    title: 'Main'
+  }, {
+    link: 'search',
+    title: 'Search'
+  }, {
+    link: 'definition-creation',
+    title: 'Definition Creation'
+  }];
 }
