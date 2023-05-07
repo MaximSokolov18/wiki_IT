@@ -1,6 +1,15 @@
 import { Component } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 
+const isEmpty = (value: string) => value === '';
+const isValidForm = (fields: ArticleData) => {
+  return !!Object.values(fields)
+      .filter((value) => Array.isArray(value) ?
+          !!value.filter((value) => isEmpty(value)).length :
+          isEmpty(value)
+      ).length;
+};
+
 type ArticleData = {
   a_name: string,
   topic: string,
@@ -26,9 +35,13 @@ export class DefinitionCreationPageComponent {
   constructor(private http: HttpClient) { }
 
   createArticle() {
-    return this.http.post('http://localhost:3000/articles', this.articleFields).subscribe(response => {
-      console.log(response);
-    });
+    if (!isValidForm(this.articleFields)) {
+      return this.http.post('http://localhost:3000/articles', this.articleFields).subscribe(response => {
+        console.log(response);
+      });
+    }
+    alert('Entry all value in fields');
+    return;
   }
 
   changeField(nameField: keyof ArticleData, event: Event) {
