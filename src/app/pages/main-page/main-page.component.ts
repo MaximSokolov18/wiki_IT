@@ -30,7 +30,7 @@ export class MainPageComponent {
       this.articles = Object.entries((response as Array<any>).reduce((acc, item) => {
         return {
           ...acc,
-          [item.id_topic]: acc?.[item.id_topic] ? [...acc?.[item.id_topic], item] : [item]
+          [item.name_topic]: acc?.[item.name_topic] ? [...acc?.[item.name_topic], item] : [item]
         }
       }, {})).map(([name, children]) => ({name, children: (children as Array<any>).map((item) => ({name: item.a_name}))}));
 
