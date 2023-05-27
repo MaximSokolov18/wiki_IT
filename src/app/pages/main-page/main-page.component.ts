@@ -8,6 +8,15 @@ type Node = {
   children?: Node[];
 }
 
+type Article = {
+  id: number,
+  a_name: string,
+  id_topic: number,
+  link: string,
+  name_topic: string,
+  content: string
+}
+
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
@@ -16,25 +25,30 @@ type Node = {
 export class MainPageComponent {
   treeControl = new NestedTreeControl<Node>(node => node.children);
   dataSource = new MatTreeNestedDataSource<Node>();
-  articles: any = [];
+  articles: Array<Article> = [];
+  mainContent?: Article;
   hasChild = (_: number, node: Node) => !!node.children && node.children.length > 0;
 
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.getArticles();
+    this.setArticles();
   }
 
-  getArticles() {
+  setArticles() {
     this.http.get('http://localhost:3000/articles').subscribe((response) => {
-      this.articles = Object.entries((response as Array<any>).reduce((acc, item) => {
+      this.dataSource.data = Object.entries((response as Array<Article>).reduce((acc, item) => {
         return {
           ...acc,
           [item.name_topic]: acc?.[item.name_topic] ? [...acc?.[item.name_topic], item] : [item]
         }
-      }, {})).map(([name, children]) => ({name, children: (children as Array<any>).map((item) => ({name: item.a_name}))}));
+      }, {} as any)).map(([name, children]) => ({name, children: (children as Array<any>).map((item) => ({name: item.a_name}))}));
 
-      this.dataSource.data = this.articles;
+      this.articles = (response as Array<Article>);
     });
+  }
+
+  setMainContent(articleName: string) {
+    this.mainContent = this.articles.find(({a_name}) => a_name === articleName);
   }
 }
