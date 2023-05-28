@@ -47,12 +47,17 @@ export class SearchPageComponent implements OnInit {
   }
 
   searchArticles() {
-    this.http
-        .get(`
-          http://localhost:3000/articles/keywords/${this.allKeywords.filter(({name}) => name === this.myControl.value)[0].id}
-        `)
-        .subscribe((response) => {
-          this.articles = response as Array<Article>;
-        })
+    const keywordId = this.allKeywords.filter(({name}) => name.trim().toLowerCase() === this.myControl.value?.toLowerCase())[0]?.id;
+
+    if (keywordId) {
+      this.http
+          .get(`http://localhost:3000/articles/keywords/${keywordId}`)
+          .subscribe((response) => {
+            this.articles = response as Array<Article>;
+          })
+    } else {
+      alert('Nothing found, please try again!');
+      this.articles = [];
+    }
   }
 }
