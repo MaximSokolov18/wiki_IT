@@ -1,1 +1,39 @@
-<p>search-page works!</p>
+<div class="search-page">
+    <div class="search-page__search-block">
+        <form class="search-page__search-form">
+            <mat-form-field class="search-page__search-input">
+                <mat-label>Search article</mat-label>
+                <input type="text"
+                       placeholder="Web"
+                       aria-label="Search article"
+                       matInput
+                       [formControl]="myControl"
+                       [matAutocomplete]="auto">
+                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                        {{option}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+            <button class="search-page__search-button" mat-stroked-button (click)="searchArticles()">Search</button>
+        </form>
+    </div>
+    <div class="search-page__result" *ngIf="articles.length">
+        <div class="search-page__article" *ngFor="let article of articles">
+            <mat-card class="search-page__card">
+                <mat-card-header>
+                    <mat-card-title>{{article.name_topic}}</mat-card-title>
+                    <mat-card-subtitle>{{article.a_name}}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <p>
+                        {{article.content}}
+                    </p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <a mat-flat-button [href]="article.link" target="_blank">Source</a>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>

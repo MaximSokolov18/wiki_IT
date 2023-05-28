@@ -8,7 +8,7 @@ type Node = {
   children?: Node[];
 }
 
-type Article = {
+export type Article = {
   id: number,
   a_name: string,
   id_topic: number,
