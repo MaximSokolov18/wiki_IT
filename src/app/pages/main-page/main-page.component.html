@@ -24,19 +24,6 @@
         </mat-tree>
     </div>
     <div class="main-page__content" *ngIf="mainContent">
-        <mat-card class="main-page__card">
-            <mat-card-header>
-                <mat-card-title>{{mainContent.name_topic}}</mat-card-title>
-                <mat-card-subtitle>{{mainContent.a_name}}</mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content>
-                <p>
-                    {{mainContent.content}}
-                </p>
-            </mat-card-content>
-            <mat-card-actions>
-                <a mat-flat-button [href]="mainContent.link" target="_blank">Source</a>
-            </mat-card-actions>
-        </mat-card>
+        <app-article [articleData]="mainContent"></app-article>
     </div>
 </div>

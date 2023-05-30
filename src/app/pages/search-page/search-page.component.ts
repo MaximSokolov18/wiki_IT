@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {FormControl} from "@angular/forms";
 import {map, Observable, startWith} from "rxjs";
-import {Article} from "../main-page/main-page.component";
+import {Article} from "../../components/article/article.component";
 
 type Keyword = {
   id: number,

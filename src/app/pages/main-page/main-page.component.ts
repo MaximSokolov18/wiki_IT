@@ -2,19 +2,11 @@ import { Component } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {MatTreeNestedDataSource} from "@angular/material/tree";
 import {NestedTreeControl} from "@angular/cdk/tree";
+import {Article} from "../../components/article/article.component";
 
 type Node = {
   name: string;
   children?: Node[];
-}
-
-export type Article = {
-  id: number,
-  a_name: string,
-  id_topic: number,
-  link: string,
-  name_topic: string,
-  content: string
 }
 
 @Component({
