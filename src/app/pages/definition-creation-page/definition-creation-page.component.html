@@ -1,27 +1,64 @@
 <div class="definition-creation">
-    <div class="container">
-        <form class="definition-creation__form">
-            <mat-form-field class="definition-creation__a-name definition-creation__input">
-                <mat-label>Article Name</mat-label>
-                <input matInput placeholder="PostgreSQL" (change)="changeField('a_name', $event)">
-            </mat-form-field>
-            <mat-form-field class="definition-creation__topic definition-creation__input">
-                <mat-label>Topic</mat-label>
-                <input matInput placeholder="Бази даних" (change)="changeField('topic', $event)">
-            </mat-form-field>
-            <mat-form-field class="definition-creation__keywords definition-creation__input">
-                <mat-label>Keywords</mat-label>
-                <textarea matInput placeholder="SQL, реляційна модель даних, додаток, ..." (change)="changeField('keywords', $event)"></textarea>
-            </mat-form-field>
-            <mat-form-field class="definition-creation__content definition-creation__input">
-                <mat-label>Content</mat-label>
-                <textarea matInput placeholder="PostgreSQL є реляційною системою ..." (change)="changeField('content', $event)"></textarea>
-            </mat-form-field>
-            <mat-form-field class="definition-creation__source definition-creation__input">
-                <mat-label>Source</mat-label>
-                <input matInput placeholder="https://uk.wikipedia.org/wiki/PostgreSQL" (change)="changeField('link', $event)">
-            </mat-form-field>
-            <button mat-button color="primary" class="definition-creation__button" (click)="createArticle()">Add article</button>
-        </form>
-    </div>
+  <div class="container">
+    <form class="definition-creation__form">
+      <mat-form-field
+        class="definition-creation__a-name definition-creation__input"
+      >
+        <mat-label>Article Name</mat-label>
+        <input
+          matInput
+          placeholder="PostgreSQL"
+          (change)="changeField('a_name', $event)"
+        />
+      </mat-form-field>
+      <mat-form-field
+        class="definition-creation__topic definition-creation__input"
+      >
+        <mat-label>Topic</mat-label>
+        <input
+          matInput
+          placeholder="Бази даних"
+          (change)="changeField('topic', $event)"
+        />
+      </mat-form-field>
+      <mat-form-field
+        class="definition-creation__keywords definition-creation__input"
+      >
+        <mat-label>Keywords</mat-label>
+        <textarea
+          matInput
+          placeholder="SQL, реляційна модель даних, додаток, ..."
+          (change)="changeField('keywords', $event)"
+        ></textarea>
+      </mat-form-field>
+      <mat-form-field
+        class="definition-creation__content definition-creation__input"
+      >
+        <mat-label>Content</mat-label>
+        <textarea
+          matInput
+          placeholder="PostgreSQL є реляційною системою ..."
+          (change)="changeField('content', $event)"
+        ></textarea>
+      </mat-form-field>
+      <mat-form-field
+        class="definition-creation__source definition-creation__input"
+      >
+        <mat-label>Source</mat-label>
+        <input
+          matInput
+          placeholder="https://uk.wikipedia.org/wiki/PostgreSQL"
+          (change)="changeField('link', $event)"
+        />
+      </mat-form-field>
+      <button
+        mat-button
+        color="primary"
+        class="definition-creation__button"
+        (click)="createArticle()"
+      >
+        Add article
+      </button>
+    </form>
+  </div>
 </div>

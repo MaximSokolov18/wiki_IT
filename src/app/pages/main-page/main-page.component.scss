@@ -12,6 +12,7 @@
     justify-content: center;
     width: 60vw;
     padding: 50px;
+    text-align: justify;
   }
 
   &__card {
@@ -38,4 +39,9 @@
 
 .example-tree div[role=group] > .mat-tree-node {
   padding-left: 40px;
+  border-bottom: 2px solid rgba(50, 50, 93, 0.25);
+}
+
+.mat-tree-node {
+  border-bottom: 2px solid rgba(50, 50, 93, 0.25);
 }
