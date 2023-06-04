@@ -1,7 +1,7 @@
 <mat-card class="article">
     <mat-card-header>
-        <mat-card-title>{{articleData.name_topic}}</mat-card-title>
-        <mat-card-subtitle>{{articleData.a_name}}</mat-card-subtitle>
+        <mat-card-title>{{articleData.a_name}}</mat-card-title>
+        <mat-card-subtitle>{{articleData.name_topic}}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
         <p>
@@ -9,6 +9,8 @@
         </p>
     </mat-card-content>
     <mat-card-actions>
-        <a mat-flat-button [href]="articleData.link" target="_blank">Source</a>
+        <a mat-flat-button *ngFor="let link of getLinks(articleData.link)" [href]="articleData.link" target="_blank">
+            {{getDomainName(articleData.link)}}
+        </a>
     </mat-card-actions>
 </mat-card>

@@ -35,13 +35,17 @@ export class SearchPageComponent implements OnInit {
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
-
     return this.options.filter(option => option.toLowerCase().includes(filterValue));
   }
 
   getAllKeywords() {
     this.http.get('http://localhost:3000/allKeyword').subscribe((response) => {
       this.options = (response as Array<Keyword>).map(({name}) => name);
+      this.options = this.options.filter((value, index, self) => {
+        return self.findIndex((item) => {
+          return item.toLowerCase() === value.toLowerCase();
+        }) === index;
+      });
       this.allKeywords = (response as Array<Keyword>)
     })
   }

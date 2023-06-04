@@ -16,4 +16,12 @@ export type Article = {
 })
 export class ArticleComponent {
   @Input() articleData!: Article;
+
+  getDomainName(url: string) {
+    return url.replace(/.+\/\/|www.|\/.+/gm, '');
+  }
+
+  getLinks(links: string) {
+    return links.split(/,\s+|,+|\s+/g);
+  }
 }
