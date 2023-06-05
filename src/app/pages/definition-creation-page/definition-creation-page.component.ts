@@ -48,6 +48,7 @@ export class DefinitionCreationPageComponent {
 
   changeField(nameField: keyof ArticleData, event: Event) {
     const value = (event.target as HTMLInputElement)?.value;
+
     try {
       this.validateInputLength(nameField, value);
     } catch (e: any) {
@@ -55,8 +56,18 @@ export class DefinitionCreationPageComponent {
       (event.target as HTMLInputElement).value = value.slice(0, 50)
       return;
     }
+
+    if (nameField === 'link' && value.includes('wikipedia')) {
+      alert('link source is from wikipedia. Shame on you.');
+      return;
+    }
+
     if (nameField === 'keywords') {
       this.articleFields[nameField] = value.trim().split(/,+\s+|,/g);
+      this.articleFields[nameField].push(
+        this.articleFields.a_name,
+        this.articleFields.topic
+      );
     } else {
       this.articleFields[nameField] = value;
     }
