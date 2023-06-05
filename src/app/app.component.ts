@@ -8,12 +8,12 @@ import { Component } from '@angular/core';
 export class AppComponent {
   pageRouters: Array<{link: string, title: string}> = [{
     link: 'main',
-    title: 'Main'
+    title: 'Головна'
   }, {
     link: 'search',
-    title: 'Search'
+    title: 'Пошук'
   }, {
     link: 'definition-creation',
-    title: 'Definition Creation'
+    title: 'Створення статей'
   }];
 }

@@ -17,11 +17,17 @@ export type Article = {
 export class ArticleComponent {
   @Input() articleData!: Article;
 
+  setContent(content: string) {
+    const contentEl = (document.getElementById('content') as HTMLDivElement);
+    contentEl.innerHTML = '';
+    contentEl.innerHTML = content;
+  }
+
   getDomainName(url: string) {
     return url.replace(/.+\/\/|www.|\/.+/gm, '');
   }
 
   getLinks(links: string) {
-    return links.split(/,\s+|,+|\s+/g);
+    return links.split(/,\s+|\s+/g);
   }
 }

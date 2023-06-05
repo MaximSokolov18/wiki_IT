@@ -2,7 +2,7 @@
     <div class="main-page__menu">
         <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
             <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
-                <button mat-flat-button (click)="setMainContent(node.name)">
+                <button mat-flat-button class="main-page__menu-button" (click)="setMainContent(node.name)">
                     {{node.name}}
                 </button>
             </mat-tree-node>
