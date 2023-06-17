@@ -39,7 +39,7 @@ export class SearchPageComponent implements OnInit {
   }
 
   getAllKeywords() {
-    this.http.get('http://localhost:3000/allKeyword').subscribe((response) => {
+    this.http.get('https://cute-underwear-frog.cyclic.app/allKeyword').subscribe((response) => {
       this.options = (response as Array<Keyword>).map(({name}) => name);
       this.options = this.options.filter((value, index, self) => {
         return self.findIndex((item) => {
@@ -55,7 +55,7 @@ export class SearchPageComponent implements OnInit {
 
     if (keywordId) {
       this.http
-          .get(`http://localhost:3000/articles/keywords/${keywordId}`)
+          .get(`https://cute-underwear-frog.cyclic.app/articles/keywords/${keywordId}`)
           .subscribe((response) => {
             this.articles = response as Array<Article>;
           })
