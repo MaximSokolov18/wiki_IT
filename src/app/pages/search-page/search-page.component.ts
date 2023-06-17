@@ -52,7 +52,6 @@ export class SearchPageComponent implements OnInit {
   }
 
   searchArticles() {
-    this.isFirstlyLoaded = false;
     const keywordId = this.allKeywords.filter(({name}) => name.trim().toLowerCase() === this.myControl.value?.toLowerCase())[0]?.id;
 
     if (keywordId) {
@@ -60,6 +59,7 @@ export class SearchPageComponent implements OnInit {
           .get(`https://cute-underwear-frog.cyclic.app/articles/keywords/${keywordId}`)
           .subscribe((response) => {
             this.articles = response as Array<Article>;
+            this.isFirstlyLoaded = false;
           })
     } else {
       alert('Nothing found, please try again!');
