@@ -19,11 +19,13 @@ export class MainPageComponent {
   dataSource = new MatTreeNestedDataSource<Node>();
   articles: Array<Article> = [];
   mainContent?: Article;
+  isLoaded: boolean = false;
   hasChild = (_: number, node: Node) => !!node.children && node.children.length > 0;
 
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
+    this.isLoaded = true;
     this.setArticles();
   }
 
@@ -36,6 +38,7 @@ export class MainPageComponent {
         }
       }, {} as any)).map(([name, children]) => ({name, children: (children as Array<any>).map((item) => ({name: item.a_name}))}));
 
+      this.isLoaded = false;
       this.articles = (response as Array<Article>);
     });
   }

@@ -1,4 +1,5 @@
 <div class="main-page">
+    <mat-spinner *ngIf="isLoaded"></mat-spinner>
     <div class="main-page__menu">
         <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
             <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
