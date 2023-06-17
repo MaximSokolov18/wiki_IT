@@ -22,6 +22,7 @@ export class SearchPageComponent implements OnInit {
   filteredOptions: Observable<string[]>;
   articles: Array<Article> = [];
   allKeywords: Array<Keyword> = [];
+  isFirstlyLoaded: boolean = true;
 
   constructor(private http: HttpClient) { }
 
@@ -51,6 +52,7 @@ export class SearchPageComponent implements OnInit {
   }
 
   searchArticles() {
+    this.isFirstlyLoaded = false;
     const keywordId = this.allKeywords.filter(({name}) => name.trim().toLowerCase() === this.myControl.value?.toLowerCase())[0]?.id;
 
     if (keywordId) {
