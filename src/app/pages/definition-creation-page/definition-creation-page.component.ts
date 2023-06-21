@@ -37,7 +37,10 @@ export class DefinitionCreationPageComponent {
   createArticle() {
     if (!isValidForm(this.articleFields)) {
       return this.http
-        .post('https://cute-underwear-frog.cyclic.app/articles', this.articleFields)
+        .post(
+          'https://cute-underwear-frog.cyclic.app/articles',
+          this.articleFields
+        )
         .subscribe((response) => {
           console.log(response);
         });
@@ -53,29 +56,12 @@ export class DefinitionCreationPageComponent {
       this.validateInputLength(nameField, value);
     } catch (e: any) {
       alert(e.message);
-      (event.target as HTMLInputElement).value = value.slice(0, 50)
+      (event.target as HTMLInputElement).value = value.slice(0, 50);
       return;
     }
 
     if (nameField === 'link') {
-      if (value.includes('wikipedia')) {
-        alert('link source is from wikipedia. Shame on you.');
-        return;
-      }
-
-      // const pattern = new RegExp(
-      //   '^(https?:\\/\\/)?' +
-      //     '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' +
-      //     '((\\d{1,3}\\.){3}\\d{1,3}))' +
-      //     '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' +
-      //     '(\\?[;&a-z\\d%_.~+=-]*)?' +
-      //     '(\\#[-a-z\\d_]*)?$',
-      //   'i'
-      // );
-      // if (!pattern.test(value)) {
-      //   alert('invalid link');
-      //   return;
-      // }
+      this.validateLink(value);
     }
 
     if (nameField === 'keywords') {
@@ -94,6 +80,31 @@ export class DefinitionCreationPageComponent {
 
     if (validFields.includes(nameField) && value.length > 50) {
       throw new Error('input is more than 50');
+    }
+  }
+
+  validateLink(value: string) {
+    const links = value.split(',');
+
+    for (const link of links) {
+      if (link.includes('wikipedia')) {
+        alert(`link: ${link} source is from wikipedia. Shame on you.`);
+        return;
+      }
+
+      const pattern = new RegExp(
+        '^(https?:\\/\\/)?' +
+          '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' +
+          '((\\d{1,3}\\.){3}\\d{1,3}))' +
+          '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' +
+          '(\\?[;&a-z\\d%_.~+=-]*)?' +
+          '(\\#[-a-z\\d_]*)?$',
+        'i'
+      );
+      if (!pattern.test(link)) {
+        alert(`link: ${link} is invalid`);
+        return;
+      }
     }
   }
 }
