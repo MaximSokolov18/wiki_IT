@@ -15,5 +15,9 @@ export class AppComponent {
   }, {
     link: 'definition-creation',
     title: 'Definition Creation'
+  },
+  {
+    link: 'developer',
+    title: 'Developers'
   }];
 }

@@ -1,0 +1,41 @@
+.card-main{
+    margin-bottom: 30px;
+    max-height: 800px;
+    width: 300px;
+    background-color: white;
+    text-align: center;
+
+}
+
+.developer-list{
+    height: 700px;
+    max-height: max-content;
+}
+
+.card-div{
+    display: block;
+    padding: 20px;
+    color: black;
+    text-decoration: none;
+}
+
+.img-dev{
+    width: 150px;
+    height: 150px;
+}
+
+.card-title{
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+.card-text{
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+.cards-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
