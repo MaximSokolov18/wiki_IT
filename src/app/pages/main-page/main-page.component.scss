@@ -49,3 +49,12 @@
   justify-content: center;
   margin: 50px;
 }
+
+.example-tree .parent-element {
+  position: relative;
+}
+
+.example-tree .delete-button {
+  position: absolute;
+  right: 0;
+}
