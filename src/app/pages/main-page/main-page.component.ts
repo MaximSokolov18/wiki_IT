@@ -27,11 +27,11 @@ export class MainPageComponent {
   constructor(private http: HttpClient, private cdr: ChangeDetectorRef) { }
 
   ngOnInit() {
-    this.isLoaded = true;
     this.setArticles();
   }
 
   setArticles() {
+    this.isLoaded = true;
     this.http.get('https://cute-underwear-frog.cyclic.app/articles').subscribe((response) => {
       this.dataSource.data = Object.entries((response as Array<Article>).reduce((acc, item) => {
         return {
@@ -50,9 +50,8 @@ export class MainPageComponent {
   }
 
   deleteArticle(node: any){
-    
     this.http.post('https://cute-underwear-frog.cyclic.app/deleteArticle', {a_name: node.name}).subscribe((response) => {
-      
+      this.setArticles()
     });
   }
 }
