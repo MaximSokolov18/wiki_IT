@@ -16,7 +16,7 @@ export class DeveloperPageComponent {
     + 'при створенні.', url: 'assets/komar/dev-img/photo_Ryabchich.jpg', alt: 'image 4' },
     { name: 'Панько Анастасія Павлівна', tasks: 'Додала на сторінці створення окрему форму по '
     + 'видаленню артиклів.', url: 'assets/komar/dev-img/photo_Panko.jpg', alt: 'image 5' },
-    { name: 'Пустовіт Андрій Володимирович', tasks: 'Створив технічне завдання проекта', url: 'assets/komar/dev-img/photo_Pustovit.jpg', alt: 'image 6' },
+    { name: 'Пустовіт Андрій Володимирович', tasks: 'Розподілив теми для наповнення сайту статтями', url: 'assets/komar/dev-img/photo_Pustovit.jpg', alt: 'image 6' },
     { name: 'Соколов Максим Сергійович', tasks: 'Розробив сайт IT вікіпедію. На сайті знаходиться '
     +'меню з трьома сторінками:головна,пошук,створення артиклів.', url: 'assets/komar/dev-img/photo_Sokolov.jpg', alt: 'image 7' },
     { name: 'Строганов Янош Романович', tasks: 'Змінив paddings для артікла. Змінив '
