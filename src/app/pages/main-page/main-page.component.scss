@@ -14,11 +14,10 @@
     padding: 50px;
   }
 
-  &__card {
-    width: 50vw;
-    box-shadow: rgba(50, 50, 93, 0.25) 0 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-    height: fit-content;
+  &__menu-button {
+    text-align: start;
   }
+
 }
 
 .example-tree-invisible {
@@ -38,4 +37,15 @@
 
 .example-tree div[role=group] > .mat-tree-node {
   padding-left: 40px;
+  border-bottom: 2px solid rgba(50, 50, 93, 0.25);
+}
+
+.mat-tree-node {
+  border-bottom: 2px solid rgba(50, 50, 93, 0.25);
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  margin: 50px;
 }

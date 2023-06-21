@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {FormControl} from "@angular/forms";
 import {map, Observable, startWith} from "rxjs";
-import {Article} from "../main-page/main-page.component";
+import {Article} from "../../components/article/article.component";
 
 type Keyword = {
   id: number,
@@ -22,6 +22,7 @@ export class SearchPageComponent implements OnInit {
   filteredOptions: Observable<string[]>;
   articles: Array<Article> = [];
   allKeywords: Array<Keyword> = [];
+  isFirstlyLoaded: boolean = true;
 
   constructor(private http: HttpClient) { }
 
@@ -35,13 +36,17 @@ export class SearchPageComponent implements OnInit {
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
-
     return this.options.filter(option => option.toLowerCase().includes(filterValue));
   }
 
   getAllKeywords() {
-    this.http.get('http://localhost:3000/allKeyword').subscribe((response) => {
+    this.http.get('https://cute-underwear-frog.cyclic.app/allKeyword').subscribe((response) => {
       this.options = (response as Array<Keyword>).map(({name}) => name);
+      this.options = this.options.filter((value, index, self) => {
+        return self.findIndex((item) => {
+          return item.toLowerCase() === value.toLowerCase();
+        }) === index;
+      });
       this.allKeywords = (response as Array<Keyword>)
     })
   }
@@ -51,9 +56,10 @@ export class SearchPageComponent implements OnInit {
 
     if (keywordId) {
       this.http
-          .get(`http://localhost:3000/articles/keywords/${keywordId}`)
+          .get(`https://cute-underwear-frog.cyclic.app/articles/keywords/${keywordId}`)
           .subscribe((response) => {
             this.articles = response as Array<Article>;
+            this.isFirstlyLoaded = false;
           })
     } else {
       alert('Nothing found, please try again!');

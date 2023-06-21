@@ -56,10 +56,11 @@ import {DialogModule} from '@angular/cdk/dialog';
 import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { DefinitionCreationPageComponent } from './pages/definition-creation-page/definition-creation-page.component';
-import { DeveloperPageComponent} from './pages/developer-page/developer-page.component';
+import { ArticleComponent } from './components/article/article.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {NgFor} from "@angular/common";
+import { DeveloperPageComponent} from './pages/developer-page/developer-page.component';
 
 @NgModule({
   exports: [
@@ -121,6 +122,7 @@ export class MaterialModule {}
     SearchPageComponent,
     MainPageComponent,
     DefinitionCreationPageComponent,
+    ArticleComponent,
     DeveloperPageComponent
   ],
   imports: [
