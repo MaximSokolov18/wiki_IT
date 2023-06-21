@@ -1,0 +1,26 @@
+<div class="developer-page">
+    <mat-toolbar color="primary">
+        Developer site:
+    </mat-toolbar>
+    <mat-grid-list class="developer-list" cols="4" rowHeight="fit" gutterSize="1px" >
+        <mat-grid-tile *ngFor="let person of people">
+            <div class="cards-wrapper">
+            <mat-card class="card-main">
+                <div fxLayout="row">
+                    <div fxFlex="10">
+                        <div class="card-div">
+                        <img mat-card-image class="img-dev" [src]="person.url" [alt]="person.alt" width="100%" />
+                    </div>
+                    <div fxFlex fxFlexAlign="center">
+                        <div fxLayout="row">
+                            <h2 matListItemTitle class="card-title">{{ person.name }}</h2>
+                            <h3 matListItemLine class="card-text">{{ person.tasks }}</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </mat-card>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
