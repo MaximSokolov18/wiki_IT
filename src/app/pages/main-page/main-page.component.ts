@@ -1,4 +1,4 @@
-import { Component, ChangeDetectorRef } from '@angular/core';
+import { Component } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {MatTreeNestedDataSource} from "@angular/material/tree";
 import {NestedTreeControl} from "@angular/cdk/tree";
@@ -24,7 +24,7 @@ export class MainPageComponent {
   isLoaded: boolean = false;
   hasChild = (_: number, node: Node) => !!node.children && node.children.length > 0;
 
-  constructor(private http: HttpClient, private cdr: ChangeDetectorRef) { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
     this.setArticles();
