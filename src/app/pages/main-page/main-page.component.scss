@@ -1,16 +1,19 @@
 .main-page {
   display: flex;
+  flex-wrap:initial;
 
   &__menu {
-    width: 20vw;
+    width: 20rem;
+    height: 100vh;
+
     background-color: #bdc5cc;
-    height: fit-content;
+    overflow-y: scroll;
   }
 
   &__content {
     display: flex;
     justify-content: center;
-    width: 60vw;
+    width: 80rem;
     padding: 50px;
   }
 
@@ -57,4 +60,20 @@
 .example-tree .delete-button {
   position: absolute;
   right: 0;
+}
+
+@media only screen and (max-width: 1500px) {
+  .main-page{
+
+    &__content {
+      width: 60rem;
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+
+    &__menu {
+      width: 30rem;
+    }
+  }
+  
 }

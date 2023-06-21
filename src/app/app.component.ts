@@ -15,5 +15,9 @@ export class AppComponent {
   }, {
     link: 'definition-creation',
     title: 'Створення статей'
+  },
+  {
+    link: 'developer',
+    title: 'Розробники'
   }];
 }
