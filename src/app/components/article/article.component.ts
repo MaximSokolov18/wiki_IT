@@ -18,7 +18,7 @@ export class ArticleComponent {
   @Input() articleData!: Article;
 
   setContent(content: string) {
-    const contentEl = (document.getElementById('content') as HTMLDivElement);
+    const contentEl = (document.getElementsByClassName(this.articleData.a_name)[0] as HTMLDivElement);
     contentEl.innerHTML = '';
     contentEl.innerHTML = content;
   }
