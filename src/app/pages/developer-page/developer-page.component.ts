@@ -21,6 +21,6 @@ export class DeveloperPageComponent {
     +'меню з трьома сторінками:головна,пошук,створення артиклів.', url: 'assets/komar/dev-img/photo_Sokolov.jpg', alt: 'image 7' },
     { name: 'Строганов Янош Романович', tasks: 'Змінив paddings для артікла. Змінив '
     + 'відступи з ліва та справа в артиклі для назви.' 
-    + 'контенту. Можна зробити відступи динамічними.', url: 'assets/komar/dev-img/no-image.png', alt: 'image 8' },
+    + 'контенту. Можна зробити відступи динамічними.', url: 'assets/komar/dev-img/photo_Yanoch.jpg', alt: 'image 8' },
   ];
 }
