@@ -59,9 +59,9 @@ export class DefinitionCreationPageComponent {
       (event.target as HTMLInputElement).value = value.slice(0, 50);
       return;
     }
-
+    
     if (nameField === 'link') {
-      this.validateLink(value);
+      this.validateLinks(value);
     }
 
     if (nameField === 'keywords') {
@@ -83,7 +83,7 @@ export class DefinitionCreationPageComponent {
     }
   }
 
-  validateLink(value: string) {
+  validateLinks(value: string) {
     const links = value.split(',');
 
     for (const link of links) {
@@ -92,19 +92,21 @@ export class DefinitionCreationPageComponent {
         return;
       }
 
-      const pattern = new RegExp(
-        '^(https?:\\/\\/)?' +
-          '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' +
-          '((\\d{1,3}\\.){3}\\d{1,3}))' +
-          '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' +
-          '(\\?[;&a-z\\d%_.~+=-]*)?' +
-          '(\\#[-a-z\\d_]*)?$',
-        'i'
-      );
-      if (!pattern.test(link)) {
+      const isValidLink = this.isValidUrl(value);
+
+      if (!isValidLink) {
         alert(`link: ${link} is invalid`);
         return;
       }
     }
   }
+
+  isValidUrl(value: string) {
+  try {
+    new URL(value);
+    return true;
+  } catch (err) {
+    return false;
+  }
+}
 }
